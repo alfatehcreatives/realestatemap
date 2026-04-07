@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miami Real Estate Map Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .map-container { height: 500px; width: 100%; border-radius: 0 0 12px 12px; z-index: 1; }
+        
+        .leaflet-popup-content-wrapper { 
+            border-radius: 16px; 
+            padding: 0; 
+            overflow: hidden; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        .leaflet-popup-content { margin: 0; width: 280px !important; }
+        .popup-card img { width: 100%; height: 140px; object-fit: cover; }
+        .popup-info { padding: 16px; }
+        
+        .btn-view {
+            background: #0f172a;
+            color: white !important;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+            width: 100%;
+            text-decoration: none;
+        }
+        .btn-view:hover { background: #334155; }
+        
+        .custom-marker {
+            background: #2563eb;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <div class="max-w-5xl mx-auto px-4 py-12">
+        <header class="mb-12 text-center">
+            <span class="text-blue-600 font-semibold tracking-widest uppercase text-sm">Real Estate UI Kit</span>
+            <h1 class="text-4xl font-extrabold mt-2 tracking-tight">Miami Map Experience</h1>
+            <p class="text-slate-500 mt-4 text-lg">Detailed property visualization across different map styles.</p>
+        </header>
+
+        <div class="grid grid-cols-1 gap-12">
+            <!-- Map 1 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
+                <div class="p-5 border-b flex justify-between items-center bg-white">
+                    <h2 class="font-bold flex items-center gap-2"><i data-lucide="map" class="w-5 h-5 text-blue-600"></i> Standard OpenStreetMap</h2>
+                    <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold">OSM</span>
+                </div>
+                <div id="map1" class="map-container"></div>
+            </div>
+
+            <!-- Map 2 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
+                <div class="p-5 border-b flex justify-between items-center bg-white">
+                    <h2 class="font-bold flex items-center gap-2"><i data-lucide="moon" class="w-5 h-5 text-slate-600"></i> Midnight Dark Mode</h2>
+                    <span class="text-xs bg-slate-800 text-white px-3 py-1 rounded-full font-bold">Carto Dark</span>
+                </div>
+                <div id="map2" class="map-container"></div>
+            </div>
+
+            <!-- Map 3 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
+                <div class="p-5 border-b flex justify-between items-center bg-white">
+                    <h2 class="font-bold flex items-center gap-2"><i data-lucide="layers" class="w-5 h-5 text-slate-400"></i> Minimalist Positron</h2>
+                    <span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-bold">Light</span>
+                </div>
+                <div id="map3" class="map-container"></div>
+            </div>
+
+            <!-- Map 4 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
+                <div class="p-5 border-b flex justify-between items-center bg-white">
+                    <h2 class="font-bold flex items-center gap-2"><i data-lucide="camera" class="w-5 h-5 text-green-600"></i> Satellite Imagery</h2>
+                    <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">Imagery</span>
+                </div>
+                <div id="map4" class="map-container"></div>
+            </div>
+
+            <!-- Map 5 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
+                <div class="p-5 border-b flex justify-between items-center bg-white">
+                    <h2 class="font-bold flex items-center gap-2"><i data-lucide="mountain" class="w-5 h-5 text-orange-600"></i> Topographic Terrain</h2>
+                    <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-bold">Topo</span>
+                </div>
+                <div id="map5" class="map-container"></div>
+            </div>
+
+            <!-- Map 6 -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
+                <div class="p-5 border-b flex justify-between items-center bg-white">
+                    <h2 class="font-bold flex items-center gap-2"><i data-lucide="navigation" class="w-5 h-5 text-purple-600"></i> Voyager Detail</h2>
+                    <span class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-bold">Carto Voyager</span>
+                </div>
+                <div id="map6" class="map-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const miamiCoord = [25.7617, -80.1918];
+        const listings = [
+            { 
+                pos: [25.7617, -80.1918], 
+                price: "$1,200,000", 
+                title: "The Brickell Penthouse", 
+                beds: 3, baths: 2, 
+                url: "examplepage1.html",
+                img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                pos: [25.7743, -80.1300], 
+                price: "$3,500,000", 
+                title: "South Beach Sanctuary", 
+                beds: 4, baths: 4, 
+                url: "examplepage2.html",
+                img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                pos: [25.7174, -80.2781], 
+                price: "$850,000", 
+                title: "Coral Gables Estate", 
+                beds: 2, baths: 2, 
+                url: "examplepage3.html",
+                img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" 
+            }
+        ];
+
+        const providers = [
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+            'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+            'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', 
+            'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+        ];
+
+        function initMaps() {
+            lucide.createIcons();
+            
+            for (let i = 1; i <= 6; i++) {
+                const map = L.map(`map${i}`, {
+                    scrollWheelZoom: false
+                }).setView(miamiCoord, 12);
+                
+                L.tileLayer(providers[i-1], {
+                    attribution: '© Contributors'
+                }).addTo(map);
+
+                listings.forEach(listing => {
+                    const popupContent = `
+                        <div class="popup-card">
+                            <img src="${listing.img}" alt="${listing.title}">
+                            <div class="popup-info">
+                                <h3 class="font-bold text-lg text-slate-800">${listing.title}</h3>
+                                <p class="text-blue-600 font-bold text-xl mt-1">${listing.price}</p>
+                                <div class="flex gap-4 text-slate-500 text-sm my-3">
+                                    <span class="flex items-center gap-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v16"/><rect width="16" height="6" x="4" y="14" rx="1"/></svg>
+                                        ${listing.beds} Beds
+                                    </span>
+                                    <span class="flex items-center gap-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.12 0 1.5 1.5 0 0 0 0 2.12L6 8"/><path d="M14 8h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2Z"/><path d="M18 14h.01"/><path d="M18 18h.01"/></svg>
+                                        ${listing.baths} Baths
+                                    </span>
+                                </div>
+                                <a href="${listing.url}" class="btn-view">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    const customIcon = L.divIcon({
+                        className: 'custom-div-icon',
+                        html: `<div class="custom-marker"></div>`,
+                        iconSize: [16, 16],
+                        iconAnchor: [8, 8]
+                    });
+
+                    L.marker(listing.pos, { icon: customIcon }).addTo(map).bindPopup(popupContent);
+                });
+            }
+        }
+
+        window.onload = initMaps;
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Beach Sanctuary - Coastal Luxury</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        body { font-family: 'Outfit', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .hero-gradient { background: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.9)); }
+        .btn-coastal { 
+            background: #0ea5e9; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39);
+        }
+        .btn-coastal:hover { background: #0284c7; transform: scale(1.02); }
+    </style>
+</head>
+<body class="bg-white">
+    <nav class="fixed top-0 w-full z-50 glass-nav px-8 py-4 flex justify-between items-center">
+        <div class="text-2xl font-extrabold tracking-tighter text-sky-600">BEACH<span class="text-slate-900">FRONT</span></div>
+        <div class="flex gap-6 items-center">
+            <a href="miami_maps.html" class="text-sm font-bold flex items-center gap-2 hover:text-sky-600 transition"><i data-lucide="map"></i> Map</a>
+            <button class="btn-coastal text-white px-6 py-2 rounded-full text-sm font-bold">Inquire Now</button>
+        </div>
+    </nav>
+
+    <section class="relative h-[80vh] overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover" alt="South Beach">
+        <div class="absolute inset-0 hero-gradient flex flex-col justify-end p-12">
+            <div class="max-w-7xl mx-auto w-full">
+                <span class="bg-sky-500 text-white px-4 py-1 rounded-full text-xs font-bold mb-4 inline-block uppercase">Exclusive Waterfront</span>
+                <h1 class="text-6xl font-extrabold text-white mb-4">South Beach Sanctuary</h1>
+                <p class="text-sky-100 text-xl flex items-center gap-2"><i data-lucide="map-pin"></i> 1 Ocean Drive, Miami Beach, FL</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-8 py-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
+        <div class="lg:col-span-2">
+            <div class="flex gap-12 mb-12 border-b pb-8">
+                <div><p class="text-slate-400 uppercase text-xs font-bold mb-1">Price</p><p class="text-3xl font-extrabold">$3,500,000</p></div>
+                <div><p class="text-slate-400 uppercase text-xs font-bold mb-1">Area</p><p class="text-3xl font-extrabold">4,200 <span class="text-sm font-normal">sqft</span></p></div>
+                <div><p class="text-slate-400 uppercase text-xs font-bold mb-1">Views</p><p class="text-3xl font-extrabold">Atlantic</p></div>
+            </div>
+            <h2 class="text-3xl font-bold mb-6">Oceanfront Perfection</h2>
+            <p class="text-slate-600 text-lg leading-relaxed">This rare South Beach villa offers direct beach access and a private rooftop terrace with 360-degree views of the Atlantic Ocean and the Miami skyline. Designed with a minimalist palette, every room is bathed in natural light.</p>
+        </div>
+        <div class="bg-slate-50 p-8 rounded-3xl h-fit border border-slate-100">
+            <h3 class="text-xl font-bold mb-6">Listing Agent</h3>
+            <div class="flex items-center gap-4 mb-8">
+                <img src="https://i.pravatar.cc/100?u=beach" class="w-16 h-16 rounded-full border-2 border-white shadow-md">
+                <div><p class="font-bold text-lg">Marcus Sterling</p><p class="text-sky-600 font-medium">Principal Broker</p></div>
+            </div>
+            <button class="w-full btn-coastal text-white py-4 rounded-2xl font-bold mb-4 flex items-center justify-center gap-2">
+                <i data-lucide="mail"></i> Email Marcus
+            </button>
+            <button class="w-full bg-white text-slate-900 py-4 rounded-2xl font-bold border border-slate-200 hover:bg-slate-50 transition">Call +1 (305) 555-0123</button>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Brickell Penthouse - Luxury Listing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        
+        .premium-blur {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .btn-premium {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3);
+            filter: brightness(1.2);
+        }
+
+        .input-premium {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .input-premium:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            background: white;
+        }
+
+        .gallery-img {
+            transition: transform 0.7s scale;
+        }
+        
+        .gallery-container:hover .gallery-img {
+            transform: scale(1.05);
+        }
+
+        .stat-card {
+            border: 1px solid rgba(226, 232, 240, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #3b82f6;
+            background: white;
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-slate-900">
+    <!-- Navigation -->
+    <nav class="border-b px-8 py-5 flex justify-between items-center sticky top-0 premium-blur z-50">
+        <div class="flex items-center gap-2 font-extrabold text-2xl tracking-tighter">
+            <div class="bg-slate-900 text-white p-1.5 rounded-lg">
+                <i data-lucide="building-2" class="w-5 h-5"></i>
+            </div>
+            MIAMI<span class="text-blue-600">ESTATES</span>
+        </div>
+        <div class="flex items-center gap-8">
+            <a href="miami_maps.html" class="group text-sm font-bold flex items-center gap-2 text-slate-500 hover:text-slate-900 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i> Back to Map
+            </a>
+            <button class="btn-premium text-white px-6 py-2.5 rounded-full text-sm font-bold hidden md:block">
+                Request VIP Access
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        <!-- Hero Gallery -->
+        <div class="grid grid-cols-12 gap-4 h-[600px] mb-12">
+            <div class="col-span-12 md:col-span-8 overflow-hidden rounded-3xl relative group gallery-container">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover gallery-img" alt="Main View">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                    <span class="text-white font-medium flex items-center gap-2"><i data-lucide="maximize" class="w-4 h-4"></i> View Fullscreen</span>
+                </div>
+            </div>
+            <div class="hidden md:grid col-span-4 grid-rows-2 gap-4">
+                <div class="overflow-hidden rounded-3xl gallery-container">
+                    <img src="https://images.unsplash.com/photo-1600607687940-c52af0843990?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover gallery-img" alt="Interior">
+                </div>
+                <div class="overflow-hidden rounded-3xl relative gallery-container">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover gallery-img" alt="Pool">
+                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-white cursor-pointer hover:bg-black/40 transition">
+                        <span class="font-bold">+18 Photos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="flex justify-between items-start mb-10">
+                    <div>
+                        <div class="flex gap-2 mb-4">
+                            <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">New Construction</span>
+                            <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Waterfront</span>
+                        </div>
+                        <h1 class="text-5xl font-extrabold tracking-tight text-slate-900 mb-4">The Brickell Penthouse</h1>
+                        <p class="text-slate-500 text-lg flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-600"></i> 1200 Brickell Bay Dr, Miami, FL 33131
+                        </p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-1">Price</p>
+                        <span class="text-4xl font-black text-slate-900">$1,200,000</span>
+                    </div>
+                </div>
+
+                <!-- Specs -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                    <div class="stat-card bg-white p-6 rounded-3xl">
+                        <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                            <i data-lucide="bed" class="w-5 h-5"></i>
+                        </div>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Beds</p>
+                        <p class="text-xl font-bold">03</p>
+                    </div>
+                    <div class="stat-card bg-white p-6 rounded-3xl">
+                        <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                            <i data-lucide="bath" class="w-5 h-5"></i>
+                        </div>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Baths</p>
+                        <p class="text-xl font-bold">02</p>
+                    </div>
+                    <div class="stat-card bg-white p-6 rounded-3xl">
+                        <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                            <i data-lucide="maximize" class="w-5 h-5"></i>
+                        </div>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Sq Ft</p>
+                        <p class="text-xl font-bold">2,450</p>
+                    </div>
+                    <div class="stat-card bg-white p-6 rounded-3xl">
+                        <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                            <i data-lucide="car" class="w-5 h-5"></i>
+                        </div>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Garage</p>
+                        <p class="text-xl font-bold">02</p>
+                    </div>
+                </div>
+
+                <div class="prose prose-slate max-w-none">
+                    <h2 class="text-2xl font-bold mb-6">Property Overview</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                        This architectural masterpiece redefines coastal living. Perched high above the Miami skyline, the residence offers a seamless blend of indoor and outdoor spaces, featuring 12-foot ceilings and expansive terraces that capture the essence of the Atlantic breeze.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="relative">
+                <div class="sticky top-32 bg-white p-8 rounded-[2rem] shadow-2xl shadow-slate-200/60 border border-slate-100">
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="https://i.pravatar.cc/150?u=miami" class="w-14 h-14 rounded-full object-cover" alt="Agent">
+                        <div>
+                            <p class="font-bold text-slate-900">Julianna Velez</p>
+                            <p class="text-sm text-blue-600 font-semibold">Luxury Specialist</p>
+                        </div>
+                    </div>
+                    
+                    <form class="space-y-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
+                            <input type="text" placeholder="John Doe" class="input-premium w-full px-5 py-3.5 rounded-2xl bg-slate-50 focus:outline-none">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
+                            <input type="email" placeholder="john@luxury.com" class="input-premium w-full px-5 py-3.5 rounded-2xl bg-slate-50 focus:outline-none">
+                        </div>
+                        <button type="button" class="btn-premium w-full text-white py-5 rounded-2xl font-bold shadow-xl shadow-blue-900/20 flex items-center justify-center gap-3 mt-4">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                            Schedule Private Tour
+                        </button>
+                        <button type="button" class="w-full bg-white border border-slate-200 text-slate-900 py-4 rounded-2xl font-bold hover:bg-slate-50 transition flex items-center justify-center gap-2">
+                            <i data-lucide="message-square" class="w-4 h-4"></i> Ask a Question
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
